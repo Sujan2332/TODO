@@ -12,7 +12,7 @@ export const TaskFilters = ({ tasks, setTasks }) => {
   };
 
   return (
-    <Box sx={{ width: '99%', mt: 3, px: { xs: 2, sm: 3, md: 5 }, textAlign: 'center' }}>
+    <Box sx={{ width: '100%', mt: 3, px: { xs: 2, sm: 3, md: 5 }, textAlign: 'center' }}>
       <ButtonGroup
         fullWidth
         variant="outlined"
