@@ -31,7 +31,7 @@ const TaskFormComponent = ({ tasks, setTasks }) => {
         onSubmit={(e) => e.preventDefault()}
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexDirection: 'column',
           alignItems: 'center',
           gap: 2,
           width: '100%',
