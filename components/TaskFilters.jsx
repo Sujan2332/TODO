@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ButtonGroup, Button, Box } from '@mui/material';
+import { ButtonGroup, Button, Box, useTheme } from '@mui/material';
 import { TaskList } from './TaskListComponent';
 
 export const TaskFilters = ({ tasks, setTasks }) => {
   const [filter, setFilter] = useState("All");
+  const theme = useTheme(); // Get the current theme
 
   const getFilteredTasks = () => {
     if (filter === "Completed") return tasks.filter(task => task.completed);
@@ -24,8 +25,8 @@ export const TaskFilters = ({ tasks, setTasks }) => {
             fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' },
             textTransform: "capitalize",
             '&.active': {
-              backgroundColor: '#90caf9', // Highlight color
-              color: 'black', // Text color for the active button
+              backgroundColor: theme.palette.primary.main, // Use the primary color from the theme
+              color: theme.palette.primary.contrastText, // Use the contrast text color from the theme
             },
           },
         }}
