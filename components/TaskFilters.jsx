@@ -24,15 +24,30 @@ export const TaskFilters = ({ tasks, setTasks }) => {
             fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' },
             textTransform: "capitalize",
             '&.active': {
-              backgroundColor: '#90caf9', // Highlight color
-              color: 'black', // Text color for the active button
+              backgroundColor: '#1976d2', // Highlight color
+              color: 'white', // Text color for the active button
             },
           },
         }}
       >
-        <Button onClick={() => setFilter("All")}  className={filter === "All" ? 'active' : ''}>All</Button>
-        <Button onClick={() => setFilter("Completed")} className={filter === "Completed" ? 'active' : ''}>Completed</Button>
-        <Button onClick={() => setFilter("Pending")} className={filter === "Pending" ? 'active' : ''}>Pending</Button>
+        <Button
+          onClick={() => setFilter("All")}
+          className={filter === "All" ? 'active' : ''}
+        >
+          All
+        </Button>
+        <Button
+          onClick={() => setFilter("Completed")}
+          className={filter === "Completed" ? 'active' : ''}
+        >
+          Completed
+        </Button>
+        <Button
+          onClick={() => setFilter("Pending")}
+          className={filter === "Pending" ? 'active' : ''}
+        >
+          Pending
+        </Button>
       </ButtonGroup>
 
       <TaskList tasks={getFilteredTasks()} setTasks={setTasks} />
