@@ -42,7 +42,7 @@ const AppBarComponent = ({ darkMode, toggleTheme }) => {
           variant="h6"
           sx={{
             marginRight: "10px",
-            fontFamily: "fantasy",
+            fontFamily: "",
             fontWeight:"100px",
             fontSize: { xs: '0.8rem', sm: '1rem', md: '1.25rem' }, // Adjust font size for responsiveness
           }}

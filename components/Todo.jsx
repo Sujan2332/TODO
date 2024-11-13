@@ -7,7 +7,11 @@ import { ProgressIndicator } from './ProgressIndicator';
 
 const Todo_MUI = () => {
   const [darkMode, setDarkMode] = useState(true);
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    // Initialize tasks from localStorage or set to an empty array
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
   const [currentDateTime, setCurrentDateTime] = useState('');
 
   const theme = createTheme({
@@ -21,40 +25,31 @@ const Todo_MUI = () => {
     },
   });
 
-  useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    if (storedTasks) setTasks(storedTasks);
-  }, []);
-
+  // Save tasks to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   useEffect(() => {
-    // Function to update the current date and time
     const updateDateTime = () => {
       const now = new Date();
-      const date = now.toLocaleDateString(); // Format as MM/DD/YYYY
-      const time = now.toLocaleTimeString(); // Format as HH:MM:SS AM/PM
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
       setCurrentDateTime(`${date} ${time}`);
     };
 
     updateDateTime(); // Initial call to set the date and time
-
-    // Set an interval to update the date and time every second
     const intervalId = setInterval(updateDateTime, 1000);
-
-    // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
   }, []);
 
   const toggleTheme = () => setDarkMode(!darkMode);
 
   return (
-    <ThemeProvider theme={theme} sx={{display:"flex",alignItems:"center",justifyContent:"center",flexDirection:"column"}}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppBarComponent darkMode={darkMode} toggleTheme={toggleTheme}>
-      <Typography variant="h6" sx={{ marginTop: 2 }}>
+        <Typography variant="h6" sx={{ marginTop: 2 }}>
           {currentDateTime}
         </Typography>
       </AppBarComponent>
@@ -62,7 +57,6 @@ const Todo_MUI = () => {
         <TaskFormComponent setTasks={setTasks} tasks={tasks} />
         <TaskFilters tasks={tasks} setTasks={setTasks} />
         <ProgressIndicator tasks={tasks} />
-        {/* Display current date and time */}
       </Grid>
     </ThemeProvider>
   );

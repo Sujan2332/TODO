@@ -7,7 +7,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 const TaskFormComponent = ({ tasks, setTasks }) => {
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
-  const [dueDate, setDueDate] = useState(null); // Use Date object for DateTimePicker
+  const [dueDate, setDueDate] = useState(null);
 
   const addTaskToList = () => {
     if (task.trim() !== "") {
@@ -15,12 +15,12 @@ const TaskFormComponent = ({ tasks, setTasks }) => {
         text: task,
         description,
         completed: false,
-        dueDate: dueDate || new Date(), // Use current date if no date is selected
+        dueDate: dueDate || new Date(),
       };
       setTasks([...tasks, newTask]);
       setTask("");
       setDescription("");
-      setDueDate(null); // Reset due date after adding the task
+      setDueDate(null);
     }
   };
 
@@ -41,15 +41,23 @@ const TaskFormComponent = ({ tasks, setTasks }) => {
           px: { xs: 2, sm: 3, md: 4 },
         }}
       >
-        <TextField
-          label="Todo"
-          fullWidth
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-          margin="normal"
-          sx={{ fontSize: { xs: '1rem', sm: '1.1rem' } }}
-        />
-        
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, width: '100%' }}>
+          <TextField
+            label="Todo"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            margin="normal"
+            sx={{ flex: 1, fontSize: { xs: '1rem', sm: '1.1rem' } }}
+          />
+          <DateTimePicker
+            label="Due Date and Time"
+            value={dueDate}
+            onChange={(newDate) => setDueDate(newDate)}
+            renderInput={(params) => (
+              <TextField {...params} margin="normal" sx={{ flex: 1, fontSize: { xs: '0.9rem', sm: '1rem' } }} />
+            )}
+          />
+        </Box>
         <TextField
           label="Description"
           fullWidth
@@ -57,15 +65,6 @@ const TaskFormComponent = ({ tasks, setTasks }) => {
           onChange={(e) => setDescription(e.target.value)}
           margin="normal"
           sx={{ fontSize: { xs: '1rem', sm: '1.1rem' } }}
-        />
-        
-        <DateTimePicker
-          label="Due Date and Time"
-          value={dueDate}
-          onChange={(newDate) => setDueDate(newDate)}
-          renderInput={(params) => (
-            <TextField {...params} fullWidth margin="normal" sx={{ fontSize: { xs: '0.9rem', sm: '1rem' } }} />
-          )}
         />
         
         <Button
