@@ -2,6 +2,10 @@
 
 A simple and dynamic To-Do application built using React and Material-UI (MUI) that allows users to manage their tasks efficiently. This app includes features like dark and light theme toggling, task filtering, and real-time date and time updates. The tasks are stored in `localStorage` to persist between page reloads.
 
+## Preview
+
+https://sujan2332.github.io/TODO/
+
 ## Features
 
 - **Dark/Light Mode Toggle**: Switch between dark and light themes dynamically.
