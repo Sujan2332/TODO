@@ -23,6 +23,10 @@ export const TaskFilters = ({ tasks, setTasks }) => {
             padding: { xs: '8px', sm: '10px', md: '12px' },
             fontSize: { xs: '0.8rem', sm: '0.9rem', md: '1rem' },
             textTransform: "capitalize",
+            '&.active': {
+              backgroundColor: '#1976d2', // Highlight color
+              color: 'white', // Text color for the active button
+            },
           },
         }}
       >
