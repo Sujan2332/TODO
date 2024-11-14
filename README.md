@@ -29,7 +29,7 @@ To get started with this project, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-   git clone https://github.com/your-username/todo-mui.git
+   git clone https://github.com/Sujan2332/TODO.git
    
 2. **Navigate into the project directory:**
 
