@@ -131,13 +131,12 @@ Typography:*
 └── .gitignore
 ```
 
-## *🔓 License*
-
-*This project is licensed under the MIT License.*
-
 ## *🤝 Contributions*
 
 *Feel free to fork, modify, and share the app as you like!*
 
+## *🔓 License*
 
-# *💡 Keep track of your tasks, stay productive, and have a little fun along the way! 🎮*
+*This project is licensed under the MIT License.*
+
+## *💡 Keep track of your tasks, stay productive, and have a little fun along the way! 🎮*
